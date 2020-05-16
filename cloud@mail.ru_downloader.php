@@ -1,6 +1,6 @@
 <?php
   $links_file = "links.txt";
-  $storage_path = "downloads";
+  $storage_path = "/downloads";
 
   $file4aria = "input.txt";
   $aria2c = "aria2c";
@@ -9,8 +9,7 @@
   // ======================================================================================================== //
 
   $file4aria = pathcombine($current_dir, $file4aria);
-  $aria2c = pathcombine($current_dir, $aria2c);
-
+  
   if (file_exists($file4aria)) unlink($file4aria);
   $links = file($links_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -108,7 +107,7 @@
   function StartDownload()
   {
     global $aria2c, $file4aria;
-    $command = "\"{$aria2c}\" --file-allocation=none --min-tls-version=TLSv1 --max-connection-per-server=10 --split=10 --max-concurrent-downloads=10 --summary-interval=0 --continue --user-agent=\"Mozilla/5.0 (compatible; Firefox/3.6; Linux)\" --input-file=\"{$file4aria}\"";
+    $command = "\"{$aria2c}\" --file-allocation=none --min-tls-version=TLSv1.1 --max-connection-per-server=10 --split=10 --max-concurrent-downloads=10 --summary-interval=0 --continue --user-agent=\"Mozilla/5.0 (compatible; Firefox/3.6; Linux)\" --input-file=\"{$file4aria}\"";
     passthru("{$command}");
   }
 
