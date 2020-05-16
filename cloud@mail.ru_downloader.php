@@ -1,6 +1,6 @@
 <?php
   $links_file = "links.txt";
-  $storage_path = "/downloads";
+  $storage_path = "downloads";
 
   $file4aria = "input.txt";
   $aria2c = "aria2c";
